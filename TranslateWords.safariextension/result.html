@@ -1,0 +1,39 @@
+<script src="jquery-2.0.2.min.js" type="text/javascript"></script>
+<script>
+	function performCommand(event) {
+	    if (event.command === "translate") {
+	    	safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("showSelection", '');
+	    	PerformTranslation(event.userInfo);
+	    }
+	}
+
+	function validateCommand(event) {
+	    if (event.command === "translate"){
+		    var query = event.userInfo;
+		    if (!query || query.length == 0) {
+		        event.target.disabled = true;
+		    }
+		}
+	}
+
+	safari.application.addEventListener("command", performCommand, false);
+	safari.application.addEventListener("validate", validateCommand, false);
+
+	function PerformTranslation(selection) {
+		var isInverse = safari.extension.settings.inverse;
+		var fromValue = isInverse ? safari.extension.settings.to : safari.extension.settings.from;
+		var toValue = isInverse ? safari.extension.settings.from : safari.extension.settings.to;
+		
+
+		var url = 'http://umetzu.com/translate.php?text=' + encodeURIComponent(selection) + '&from=' + fromValue + '&to=' + toValue;
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', url, true);
+		xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
+
+		xhr.onload = function() {
+			safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("translate", xhr.responseText);
+		};
+
+		xhr.send();
+	}
+</script>

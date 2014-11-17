@@ -1,0 +1,62 @@
+.selected-word {
+    border: solid #A1A2A3 1px !important;
+    position: absolute !important;
+    height: 14px !important;
+    margin-top: -6px !important;
+    padding-top: 5px !important;
+    padding-bottom: 1px !important;
+    border-radius: 4px !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    box-shadow:0px 1px 1px 0px rgba(0,0,0,0.5) !important;	
+	border-color: #E8D82D !important;
+	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(1, rgb(243,233,49)),
+	color-stop(0, rgb(227,196,43))) !important;
+}
+
+.bubble 
+{
+	z-index: 1000 !important;
+    position: absolute !important;
+    padding-right: 9px !important;
+    padding-bottom: 9px !important;
+    width: 120px !important;
+	box-shadow:0px 1px 1px 0px rgba(0,0,0,0.5) !important;	
+	padding-left: 10px !important;
+	padding-top: 10px !important;
+	background: rgba(255,255,255,0.9) !important;
+	border: #BDBDBD solid 1px !important;
+	border-radius: 5px !important;
+}
+
+.bubble:after 
+{
+	content: "" !important;
+	position: absolute !important;
+	top: -10px !important;
+	left: 42px !important;
+	border-style: solid !important;
+	border-width: 0 10px 10px !important;
+	border-color: #FFFFFF transparent !important;
+	display: block !important;
+	width: 0 !important;
+	z-index: 1 !important;
+}
+
+.bubble:before 
+{
+	content: "" !important;
+	position: absolute !important;
+	top: -11px !important;
+	left: 42px !important;
+	border-style: solid!important ;
+	border-width: 0 10px 10px!important ;
+	border-color: #BDBDBD transparent!important ;
+	display: block !important;
+	width: 0 !important;
+	z-index: 0 !important;
+}
